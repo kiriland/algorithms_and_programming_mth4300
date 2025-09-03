@@ -11,14 +11,25 @@
 # RUN echo "LIBGL_ALWAYS_INDIRECT=0" >> ~/.bashrc
 
 
-FROM ubuntu:latest
+FROM ubuntu:22.04
 
-SHELL [ "/bin/bash" , "-c" ]
+ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt update && \
-    apt upgrade -y 
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    gcc g++ gdb\
+    git \
+    python3 python3-pip python3-venv
 
-RUN apt install vim -y
-RUN apt install build-essential -y
-RUN apt install -y python3
-RUN apt install python3-pip -y
+ARG USERNAME=vscode
+ARG USER_UID=1000
+ARG USER_GID=${USER_UID}
+RUN groupadd --gid ${USER_GID} ${USERNAME} \
+    && useradd -m -s /bin/bash --uid ${USER_UID} --gid ${USER_GID} ${USERNAME} \
+    && apt-get update && apt-get install -y sudo \
+    && echo "${USERNAME} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${USERNAME} \
+    && chmod 0440 /etc/sudoers.d/${USERNAME}
+
+USER ${USERNAME}
+WORKDIR /workspace
+RUN git config --global --add safe.directory /workspace
