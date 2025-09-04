@@ -39,7 +39,7 @@
 *.toc
 *.nav
 *.snm
-*.DS_Store
+.DS_Store
 
 *hidden/
 *homeworks/
