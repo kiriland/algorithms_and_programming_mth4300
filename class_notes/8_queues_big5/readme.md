@@ -2,12 +2,13 @@
 
 ## table of contents
 1. this keyword 
-2. Big 5 
-3. Separation of Interface and Implementation
-4. Compilation of multifile with g++
-5. Object oriented covered so far
-6. Object oriented we will cover
-7. In Class Assignment
+2. Queues
+3. Big 5 
+4. Separation of Interface and Implementation
+5. Compilation of multifile with g++
+6. Object oriented covered so far
+7. Object oriented we will cover
+8. Practice Examples
 
 
 ## this keyword
@@ -132,6 +133,37 @@ public:
 * In most cases, the use of ```this``` is optional when there is no name conflict between the member variables and function parameters.
 
 The ```this``` pointer is a powerful tool in C++ that provides direct access to the current object, allowing for more flexible and intuitive code design, especially in scenarios involving method chaining, self-referencing, and resolving name conflicts.
+
+
+## Queues
+In C++, queues are a type of container adapter provided by the Standard Template Library (STL). They are based on the First In, First Out (FIFO) principle, meaning elements are inserted at the back and removed from the front.
+
+### Key Characteristics of a Queue
+* **FIFO Principle:** The first element added to the queue is the first one to be removed.
+* **Restricted Access:**
+  * Elements can only be added at the back.
+  * Elements can only be removed from the front.
+* **Underlying Container:**
+  * The ```queue``` container adapter is implemented using either a deque or a list as the underlying container.
+
+### Queue Operations
+The ```std::queue``` class is defined in the ```<queue>``` header. Below are the primary operations provided:
+
+### Common Methods
+| Operation | Description                                  | Example                 |
+|-----------|----------------------------------------------|-------------------------|
+| push()    | Adds an element to the back of the queue.    | q.push(10);             |
+| pop()     | Removes the front element of the queue.      | q.pop();                |
+| front()   | Returns a reference to the front element.    | std::cout << q.front(); |
+| back()    | Returns a reference to the last element.     | std::cout << q.back();  |
+| empty()   | Checks if the queue is empty.                | if(q.empty()) { ... }   |
+| size()    | Returns the number of elements in the queue. | std::cout << q.size();  |
+
+
+### Real-World Use Cases
+* **Task Scheduling:** Managing tasks where the first task added is processed first.
+* **Print Queue:** Sending print jobs to a printer in the order they were received.
+* **Breadth-First Search (BFS) in Graphs:** To explore nodes level by level.
 
 
 ## big 5
@@ -564,7 +596,7 @@ public:
 In summary, Object-Oriented Programming in C++ is all about creating modular code using classes and objects that represent real-world entities. It leverages principles like encapsulation, inheritance, polymorphism, and abstraction to build robust and scalable software.
 
 
-## In Class Assignment
+## Practice Examples
 1. Write a class for an array of doubles, that starts off with a capacity of 1, but can grow as you add elements and name it "Vector". 
     * Include an insert method that takes an integer position, and a double element as parameters, and inserts element in the array at that position.
     * Include an erase method that takes an integer position, and deletes the element in the array at that position.
